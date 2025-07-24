@@ -3,10 +3,18 @@ USDT Rate GRPC Service
 
 Установка и запуск
 
+
 git clone https://github.com/UmalatDukuev/usdt.git
+
+
 cd usdt
+
+
 make build
+
+
 docker-compose up -d
+
 
 
 Запуск вручную (без Docker):
