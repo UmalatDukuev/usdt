@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package rates;
+
+option go_package = "internal/handler/pb;pb";
+
+service RateService {
+  rpc GetRates(Empty) returns (RateResponse);
+  rpc HealthCheck(Empty) returns (HealthStatus);
+}
+
+message Empty {}
+
+message RateResponse {
+  double ask = 1;
+  double bid = 2;
+  string timestamp = 3;
+}
+
+message HealthStatus {
+  string status = 1;
+}

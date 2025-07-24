@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: dbname
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DB_URL: "postgres://postgres:pass@db:5432/dbname?sslmode=disable"
+      API_URL: "https://grinex.io/api/v2/depth"
+      PORT: "50051"
+    ports:
+      - "50051:50051"
+    volumes:
+      - ./migrations:/migrations
